@@ -37,7 +37,7 @@ public class HelpActivity extends Activity {
     LinearLayout linear_menu_camera;
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
+    public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_help);
         textView_tutorial = (TextView)findViewById(R.id.textView_tutorial_simple);
@@ -162,7 +162,7 @@ public class HelpActivity extends Activity {
             }
         });
 
-        super.onCreate(savedInstanceState, persistentState);
+        //super.onCreate(savedInstanceState, persistentState);
     }
 
     // TTS 관련

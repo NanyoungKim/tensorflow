@@ -1106,7 +1106,6 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
 
     LinearLayout linear_menu_tutorial;
-    LinearLayout linear_menu_map;
     LinearLayout linear_menu_camera;
 
     @Override
@@ -1131,28 +1130,28 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         linear_menu_tutorial = (LinearLayout)findViewById(R.id.linear_menu_tutorial);
         linear_menu_camera = (LinearLayout) findViewById(R.id.linear_menu_camera);
 
-        // 메뉴 - 튜토리얼 클릭
-                linear_menu_tutorial.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        if(System.currentTimeMillis()>btnPressTime+1000){
-                            btnPressTime = System.currentTimeMillis();
-                            String text2 = "도움말";
-                            Toast.makeText(MapActivity.this, text2, Toast.LENGTH_SHORT).show();
+        // 메뉴 - 도움말  클릭
+        linear_menu_tutorial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(System.currentTimeMillis()>btnPressTime+1000){
+                    btnPressTime = System.currentTimeMillis();
+                    String text2 = "도움말";
+                    Toast.makeText(MapActivity.this, text2, Toast.LENGTH_SHORT).show();
 
-                            //http://stackoverflow.com/a/29777304
-                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                                ttsGreater21(text2);
-                            } else {
-                                ttsUnder20(text2);
-                            }
-                            return;
-                        }
-                        if(System.currentTimeMillis()<=btnPressTime+1000){
-                            Intent it = new Intent(MapActivity.this,HelpActivity.class);
+                    //http://stackoverflow.com/a/29777304
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                        ttsGreater21(text2);
+                    } else {
+                        ttsUnder20(text2);
+                    }
+                    return;
+                }
+                if(System.currentTimeMillis()<=btnPressTime+1000){
+                    Intent it = new Intent(MapActivity.this,HelpActivity.class);
 
-                            startActivity(it);
-                        }
+                    startActivity(it);
+                }
             }
         });
 
@@ -1557,6 +1556,12 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             googleApiClient.connect();
         }
         super.onStart();
+    }
+
+    @Override
+    public void onPause(){
+        super.onPause();
+        Log.d(TAG, "onPause : onPauseFunction");
     }
 
     @Override
