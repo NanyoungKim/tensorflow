@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:tools="http://schemas.android.com/tools"
-tools:context=".FuncActivity"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-android:orientation="vertical">
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".FuncActivity"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <RelativeLayout
         android:id="@+id/Relative_info_func"
@@ -29,54 +29,54 @@ android:orientation="vertical">
 
 
     /* 기능안내 */
-<LinearLayout
-    android:layout_below="@+id/Relative_info_func"
-    android:layout_above="@+id/down_bar"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:weightSum="2"
-    android:orientation="vertical">
-
-    <RelativeLayout
-        android:id="@+id/RelativeLayout_info_map_simple"
+    <LinearLayout
+        android:layout_below="@+id/Relative_info_func"
+        android:layout_above="@+id/down_bar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        android:background="@color/colorWhite">
+        android:weightSum="2"
+        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/textview_info_map"
+        <RelativeLayout
+            android:id="@+id/RelativeLayout_info_map_simple"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:background="@color/colorWhite">
 
-            android:text="지도"
-            android:textColor="#000000"
-            android:textSize="40sp"
-            android:textStyle="bold" />
+            <TextView
+                android:id="@+id/textview_info_map"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
 
-    </RelativeLayout>
+                android:text="지도"
+                android:textColor="#000000"
+                android:textSize="40sp"
+                android:textStyle="bold" />
 
-    <RelativeLayout
-        android:id="@+id/RelativeLayout_info_camera_simple"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        android:background="@color/colorWhite">
+        </RelativeLayout>
 
-        <TextView
-            android:id="@+id/textview_info_camera"
+        <RelativeLayout
+            android:id="@+id/RelativeLayout_info_camera_simple"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="카메라"
-            android:textColor="#000000"
-            android:textSize="40sp"
-            android:textStyle="bold" />
-    </RelativeLayout>
-</LinearLayout>
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:background="@color/colorWhite">
+
+            <TextView
+                android:id="@+id/textview_info_camera"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="카메라"
+                android:textColor="#000000"
+                android:textSize="40sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/down_bar"
@@ -88,6 +88,7 @@ android:orientation="vertical">
         android:background="@color/colorPaleGoldenrod">
 
         <LinearLayout
+            android:id="@+id/linear_menu_tutorial"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -102,6 +103,7 @@ android:orientation="vertical">
                 android:layout_marginRight="30dp"/>
 
             <TextView
+                android:id="@+id/textView_menu_tutorial"
                 android:layout_width="70dp"
                 android:layout_height="30dp"
                 android:layout_marginLeft="30dp"
@@ -115,6 +117,7 @@ android:orientation="vertical">
 
 
         <LinearLayout
+            android:id="@+id/linear_menu_map"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -141,6 +144,7 @@ android:orientation="vertical">
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/linear_menu_camera"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"

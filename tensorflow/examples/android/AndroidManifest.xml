@@ -118,7 +118,7 @@
 
 
 
-        <activity android:name=".DetectorActivity"
+        <activity android:name=".MapActivity"
             android:screenOrientation="portrait"
             android:label="@string/activity_name_detection">
             <intent-filter>
@@ -127,11 +127,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!--        <activity android:name=".DetectorActivity"></activity>-->
         <activity android:name=".TutorialActivity"></activity>
-        <activity android:name=".SearchActivity"></activity>
-        <activity android:name=".FuncActivity"></activity>
+
+        <activity android:name=".DetectorActivity"></activity>
         <activity android:name=".CameraInfoActivity"></activity>
+        <activity android:name=".FuncActivity"></activity>
+        <activity android:name=".HelpActivity"></activity>
+
+        <activity android:name=".SearchActivity"></activity>
         <activity android:name=".MapInfoActivity"></activity>
         <activity android:name=".PopupCheckDestActivity" android:theme="@android:style/Theme.Dialog"/>
         <activity android:name=".PopupActivity" android:theme="@android:style/Theme.Dialog"/>

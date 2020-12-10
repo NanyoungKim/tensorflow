@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:tools="http://schemas.android.com/tools"
-tools:context=".MapInfoActivity"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-android:orientation="vertical">
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".CameraActivity"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
     <RelativeLayout
         android:id="@+id/Relative_info_map"
         android:layout_width="match_parent"
@@ -30,10 +30,10 @@ android:orientation="vertical">
     <RelativeLayout
         android:id="@+id/Relative_info_Map"
         android:layout_below="@+id/Relative_info_map"
-        android:layout_above="@+id/down_map"
+        android:layout_above="@+id/down_bar"
+        android:background="@color/colorWhite"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/colorWhite">
+        android:layout_height="match_parent">
         <TextView
             android:id="@+id/textView_info_map_content"
             android:layout_width="match_parent"
@@ -52,7 +52,7 @@ android:orientation="vertical">
     </RelativeLayout>
 
     <LinearLayout
-        android:id="@+id/down_map"
+        android:id="@+id/down_bar"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:orientation="horizontal"
@@ -61,6 +61,7 @@ android:orientation="vertical">
         android:background="@color/colorPaleGoldenrod">
 
         <LinearLayout
+            android:id="@+id/linear_menu_tutorial"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -75,6 +76,7 @@ android:orientation="vertical">
                 android:layout_marginRight="30dp"/>
 
             <TextView
+                android:id="@+id/textView_menu_tutorial"
                 android:layout_width="70dp"
                 android:layout_height="30dp"
                 android:layout_marginLeft="30dp"
@@ -88,6 +90,7 @@ android:orientation="vertical">
 
 
         <LinearLayout
+            android:id="@+id/linear_menu_map"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -114,6 +117,7 @@ android:orientation="vertical">
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/linear_menu_camera"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"

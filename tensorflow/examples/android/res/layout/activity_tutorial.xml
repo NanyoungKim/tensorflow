@@ -29,8 +29,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/textView_app_manual_title"
-        android:layout_above="@+id/tutorial_down_bar"
-        android:background="@color/colorWhite">
+        android:background="@color/colorWhite"
+        android:layout_above="@+id/tutorial_down_bar">
         <TextView
             android:id="@+id/textView_app_manual_contents"
             android:layout_width="wrap_content"
@@ -51,10 +51,10 @@
         android:orientation="horizontal"
         android:layout_alignParentBottom="true"
         android:weightSum="3"
-
         android:background="@color/colorPaleGoldenrod">
 
         <LinearLayout
+            android:id="@+id/linear_menu_tutorial"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -69,6 +69,7 @@
                 android:layout_marginRight="30dp"/>
 
             <TextView
+                android:id="@+id/textView_menu_tutorial"
                 android:layout_width="70dp"
                 android:layout_height="30dp"
                 android:layout_marginLeft="30dp"
@@ -78,12 +79,11 @@
                 android:textSize="20sp"
                 android:text="도움말"
                 android:textColor="#000000"/>
-
-
         </LinearLayout>
 
 
         <LinearLayout
+            android:id="@+id/linear_menu_map"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -110,6 +110,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/linear_menu_camera"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -133,7 +134,6 @@
                 android:textSize="20sp"
                 android:text="카메라"
                 android:textColor="@color/colorDarkGray"/>
-
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

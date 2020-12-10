@@ -1,5 +1,7 @@
 package org.tensorflow.demo;
 
+// FuncActivity
+
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
@@ -8,6 +10,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,11 +31,19 @@ public class FuncActivity extends Activity {
 
     TextToSpeech tts;
     String text;
+    LinearLayout linear_menu_tutorial;
+    LinearLayout linear_menu_map;
+    LinearLayout linear_menu_camera;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info_func);
+
+        linear_menu_tutorial = (LinearLayout)findViewById(R.id.linear_menu_tutorial);
+        linear_menu_map = (LinearLayout)findViewById(R.id.linear_menu_map);
+        linear_menu_camera = (LinearLayout) findViewById(R.id.linear_menu_camera);
+
 
         infomap = (RelativeLayout)findViewById(R.id.RelativeLayout_info_map_simple);
         infocam = (RelativeLayout)findViewById(R.id.RelativeLayout_info_camera_simple);
@@ -95,6 +106,81 @@ public class FuncActivity extends Activity {
                 }
             }
         });
+
+        // 메뉴 - 도움말 클릭
+        linear_menu_tutorial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(System.currentTimeMillis()>btnPressTime+1000){
+                    btnPressTime = System.currentTimeMillis();
+                    String text2 = "도움말";
+                    Toast.makeText(FuncActivity.this, text2, Toast.LENGTH_SHORT).show();
+
+                    //http://stackoverflow.com/a/29777304
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                        ttsGreater21(text2);
+                    } else {
+                        ttsUnder20(text2);
+                    }
+                    return;
+                }
+                if(System.currentTimeMillis()<=btnPressTime+1000){
+                    Intent it = new Intent(FuncActivity.this,HelpActivity.class);
+
+                    startActivity(it);
+                }
+            }
+        });
+
+        // 메뉴 - 지도 클릭
+        linear_menu_map.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(System.currentTimeMillis()>btnPressTime+1000){
+                    btnPressTime = System.currentTimeMillis();
+                    String text2 = "지도";
+                    Toast.makeText(FuncActivity.this, text2, Toast.LENGTH_SHORT).show();
+
+                    //http://stackoverflow.com/a/29777304
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                        ttsGreater21(text2);
+                    } else {
+                        ttsUnder20(text2);
+                    }
+                    return;
+                }
+                if(System.currentTimeMillis()<=btnPressTime+1000){
+                    Intent it = new Intent(FuncActivity.this,MapActivity.class);
+
+                    startActivity(it);
+                }
+            }
+        });
+
+        // 메뉴 - 카메라 클릭
+        linear_menu_camera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(System.currentTimeMillis()>btnPressTime+1000){
+                    btnPressTime = System.currentTimeMillis();
+                    String text2 = "카메라";
+                    Toast.makeText(FuncActivity.this, text2, Toast.LENGTH_SHORT).show();
+
+                    //http://stackoverflow.com/a/29777304
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                        ttsGreater21(text2);
+                    } else {
+                        ttsUnder20(text2);
+                    }
+                    return;
+                }
+                if(System.currentTimeMillis()<=btnPressTime+1000){
+                    Intent it = new Intent(FuncActivity.this,DetectorActivity.class);
+
+                    startActivity(it);
+                }
+            }
+        });
     }
     // TTS 관련
     @SuppressWarnings("deprecation")
@@ -109,5 +195,13 @@ public class FuncActivity extends Activity {
         String utteranceId=this.hashCode() + "";
         tts.speak(text, TextToSpeech.QUEUE_FLUSH, null, utteranceId);
     }
+    protected void onDestroy() {
+        super.onDestroy();
+        // TTS 객체가 남아있다면 실행을 중지하고 메모리에서 제거한다.
+        if(tts != null){
+            tts.stop();
+            tts.shutdown();
+            tts = null;
+        }
+    }
 }
-

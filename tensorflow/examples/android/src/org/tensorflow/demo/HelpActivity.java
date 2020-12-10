@@ -1,28 +1,30 @@
 package org.tensorflow.demo;
+// HelpActivity.java
+// HelpActivity.java
 
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.speech.tts.TextToSpeech;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 
 import java.util.HashMap;
 import java.util.Locale;
 
-public class HelpActivity extends Fragment {
-    TextView textView;
-    TextView textView1;
+public class HelpActivity extends Activity {
+    TextView textView_tutorial;
+    TextView textView_info_func;
+    TextView textView_menu_tutorial;
     Context mContext;
 
     TextToSpeech tts;
@@ -31,19 +33,23 @@ public class HelpActivity extends Fragment {
     private long btnPressTime = 0;
     RelativeLayout relativehelp;
     RelativeLayout relativetutorial;
+    LinearLayout linear_menu_map;
+    LinearLayout linear_menu_camera;
 
-    public static HelpActivity newInstance(){
-        HelpActivity helpfr = new HelpActivity();
-        return helpfr;
-    }
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.activity_help, null);
+    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_help);
+        textView_tutorial = (TextView)findViewById(R.id.textView_tutorial_simple);
 
-        relativehelp = (RelativeLayout) view.findViewById(R.id.RelativeLayout_info_func_simple);
-        relativetutorial = (RelativeLayout) view.findViewById(R.id.RelativeLayout_tutorial_simple);
-        textView = (TextView)view.findViewById(R.id.textView_tutorial_simple);
-        tts = new TextToSpeech(getContext(), new TextToSpeech.OnInitListener() {
+        relativehelp = (RelativeLayout) findViewById(R.id.RelativeLayout_info_func_simple);
+        relativetutorial = (RelativeLayout) findViewById(R.id.RelativeLayout_tutorial_simple);
+        linear_menu_map = (LinearLayout) findViewById(R.id.linear_menu_map);
+        linear_menu_camera = (LinearLayout) findViewById(R.id.linear_menu_camera);
+
+
+        // tts 설정
+        tts = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
             @Override
             public void onInit(int status) {
                 if (status != TextToSpeech.ERROR) {
@@ -53,14 +59,16 @@ public class HelpActivity extends Fragment {
             }
         });
 
+        // 튜토리얼에 관한 설명
+        textView_tutorial = (TextView)findViewById(R.id.textView_tutorial_simple);
         relativetutorial.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 if(System.currentTimeMillis()>btnPressTime+1000){
                     btnPressTime = System.currentTimeMillis();
-                    String text1 = textView.getText().toString();
-                    Toast.makeText(getContext(), text1, Toast.LENGTH_SHORT).show();
+                    String text1 = textView_tutorial.getText().toString();
+                    Toast.makeText(HelpActivity.this, text1, Toast.LENGTH_SHORT).show();
 
                     //http://stackoverflow.com/a/29777304
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -72,20 +80,21 @@ public class HelpActivity extends Fragment {
                 }
                 if(System.currentTimeMillis()<=btnPressTime+1000){
                     //((MainActivity)getActivity()).replaceFragment(TutorialActivity.newInstance());
-                    Intent intent = new Intent(getActivity(),TutorialActivity.class);
+                    Intent intent = new Intent(HelpActivity.this,TutorialActivity.class);
                     startActivity(intent);
                 }
             }
         });
 
-        textView1 = (TextView)view.findViewById(R.id.textView_info_func_simple);
+        // 기능에 관한 설명
+        textView_info_func = (TextView)findViewById(R.id.textView_info_func_simple);
         relativehelp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(System.currentTimeMillis()>btnPressTime+1000){
                     btnPressTime = System.currentTimeMillis();
-                    String text1 = textView1.getText().toString();
-                    Toast.makeText(getContext(), text1, Toast.LENGTH_SHORT).show();
+                    String text1 = textView_info_func.getText().toString();
+                    Toast.makeText(HelpActivity.this, text1, Toast.LENGTH_SHORT).show();
 
                     //http://stackoverflow.com/a/29777304
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -95,16 +104,67 @@ public class HelpActivity extends Fragment {
                     }
                     return;
                 }
-                    if(System.currentTimeMillis()<=btnPressTime+1000){
-                    Intent it = new Intent(getActivity(),FuncActivity.class);
+                if(System.currentTimeMillis()<=btnPressTime+1000){
+                    Intent it = new Intent(HelpActivity.this,FuncActivity.class);
 
                     startActivity(it);
                 }
             }
         });
 
-        return view;
+        // 메뉴 - 지도 클릭
+        linear_menu_map.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(System.currentTimeMillis()>btnPressTime+1000){
+                    btnPressTime = System.currentTimeMillis();
+                    String text2 = "지도";
+                    Toast.makeText(HelpActivity.this, text2, Toast.LENGTH_SHORT).show();
+
+                    //http://stackoverflow.com/a/29777304
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                        ttsGreater21(text2);
+                    } else {
+                        ttsUnder20(text2);
+                    }
+                    return;
+                }
+                if(System.currentTimeMillis()<=btnPressTime+1000){
+                    Intent it = new Intent(HelpActivity.this,MapActivity.class);
+
+                    startActivity(it);
+                }
+            }
+        });
+
+        // 메뉴 - 카메라  클릭
+        linear_menu_camera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(System.currentTimeMillis()>btnPressTime+1000){
+                    btnPressTime = System.currentTimeMillis();
+                    String text2 = "카메라";
+                    Toast.makeText(HelpActivity.this, text2, Toast.LENGTH_SHORT).show();
+
+                    //http://stackoverflow.com/a/29777304
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                        ttsGreater21(text2);
+                    } else {
+                        ttsUnder20(text2);
+                    }
+                    return;
+                }
+                if(System.currentTimeMillis()<=btnPressTime+1000){
+                    Intent it = new Intent(HelpActivity.this,DetectorActivity.class);
+
+                    startActivity(it);
+                }
+            }
+        });
+
+        super.onCreate(savedInstanceState, persistentState);
     }
+
     // TTS 관련
     @SuppressWarnings("deprecation")
     private void ttsUnder20(String text) {

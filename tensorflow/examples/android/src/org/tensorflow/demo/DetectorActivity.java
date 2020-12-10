@@ -108,8 +108,8 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
   // Minimum detection confidence to track a detection.
   private static final float MINIMUM_CONFIDENCE_TF_OD_API = 0.6f;
   private static final float MINIMUM_CONFIDENCE_MULTIBOX = 0.1f;
-  private static final float MINIMUM_CONFIDENCE_YOLO = 0.5f;
-  //private static final float MINIMUM_CONFIDENCE_YOLO = 0.05f;
+  //private static final float MINIMUM_CONFIDENCE_YOLO = 0.5f;
+  private static final float MINIMUM_CONFIDENCE_YOLO = 0.05f;
 
   private static final boolean MAINTAIN_ASPECT = MODE == DetectorMode.YOLO;
 
@@ -407,23 +407,25 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
                 String str = result.getTitle();
                 if(str.equals("trafficlightGreen")) {
                   list1[i] = "     초록불입니다           ";
-                  tts.playSilentUtterance(5000, TextToSpeech.QUEUE_ADD, null);
+                  //tts.playSilentUtterance(5000, TextToSpeech.QUEUE_ADD, null);
 
 
                 }
                 else if(str.equals("trafficlightRed")) {
                   list1[i] = "     빨간불입니다           ";
-                  tts.playSilentUtterance(5000, TextToSpeech.QUEUE_ADD, null);
+                  //tts.playSilentUtterance(5000, TextToSpeech.QUEUE_ADD, null);
                 }
                 else {
                   list1[i] = "신호등   ";
-                  tts.playSilentUtterance(5000, TextToSpeech.QUEUE_ADD, null);
+                  //tts.playSilentUtterance(5000, TextToSpeech.QUEUE_ADD, null);
                 }
 
 
-                i++;
+                if(i==3) {i = 0;}
+                else{i++;}
 
-                //
+
+
 
 
               }
@@ -641,6 +643,8 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
   public void onDestroy() {
     if (tts != null) {
       if(tts.isSpeaking()) {
+
+
         tts.stop();
       }
       tts.shutdown();
