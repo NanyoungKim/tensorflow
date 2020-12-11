@@ -41,6 +41,7 @@ import android.view.Display;
 import android.view.Surface;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
@@ -108,8 +109,8 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
   // Minimum detection confidence to track a detection.
   private static final float MINIMUM_CONFIDENCE_TF_OD_API = 0.6f;
   private static final float MINIMUM_CONFIDENCE_MULTIBOX = 0.1f;
-  //private static final float MINIMUM_CONFIDENCE_YOLO = 0.5f;
-  private static final float MINIMUM_CONFIDENCE_YOLO = 0.05f;
+  private static final float MINIMUM_CONFIDENCE_YOLO = 0.1f;
+  //private static final float MINIMUM_CONFIDENCE_YOLO = 0.05f;
 
   private static final boolean MAINTAIN_ASPECT = MODE == DetectorMode.YOLO;
 
@@ -149,6 +150,9 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
   boolean pause = false;
   TessBaseAPI tessBaseAPI;
   CameraSurfaceView surfaceView;
+  Button buttontext;
+
+  TextView textview;
 
 
   //
@@ -415,13 +419,96 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
                   list1[i] = "     빨간불입니다           ";
                   //tts.playSilentUtterance(5000, TextToSpeech.QUEUE_ADD, null);
                 }
-                else {
-                  list1[i] = "신호등   ";
+                else if(str.equals("green1")) {
+                  list1[i] = "     1초 남았습니다           ";
+                  //tts.playSilentUtterance(5000, TextToSpeech.QUEUE_ADD, null);
+                }
+                else if(str.equals("green2")) {
+                  list1[i] = "     2초 남았습니다           ";
+                  //tts.playSilentUtterance(5000, TextToSpeech.QUEUE_ADD, null);
+                }
+                else if(str.equals("green3")) {
+                  list1[i] = "     3초 남았습니다           ";
+                  //tts.playSilentUtterance(5000, TextToSpeech.QUEUE_ADD, null);
+                }
+                else if(str.equals("green4")) {
+                  list1[i] = "     4초 남았습니다           ";
+                  //tts.playSilentUtterance(5000, TextToSpeech.QUEUE_ADD, null);
+                }
+                else if(str.equals("green5")) {
+                  list1[i] = "     5초 남았습니다           ";
+                  //tts.playSilentUtterance(5000, TextToSpeech.QUEUE_ADD, null);
+                }
+                else if(str.equals("green6")) {
+                  list1[i] = "     6초 남았습니다           ";
+                  //tts.playSilentUtterance(5000, TextToSpeech.QUEUE_ADD, null);
+                }
+                else if(str.equals("green7")) {
+                  list1[i] = "     7초 남았습니다           ";
+                  //tts.playSilentUtterance(5000, TextToSpeech.QUEUE_ADD, null);
+                }
+                else if(str.equals("green8")) {
+                  list1[i] = "     8초 남았습니다           ";
+                  //tts.playSilentUtterance(5000, TextToSpeech.QUEUE_ADD, null);
+                }
+                else if(str.equals("green9")) {
+                  list1[i] = "     9초 남았습니다           ";
+                  //tts.playSilentUtterance(5000, TextToSpeech.QUEUE_ADD, null);
+                }
+                else if(str.equals("green10")) {
+                  list1[i] = "     10초 남았습니다           ";
+                  //tts.playSilentUtterance(5000, TextToSpeech.QUEUE_ADD, null);
+                }
+                else if(str.equals("green11")) {
+                  list1[i] = "     11초 남았습니다           ";
+                  //tts.playSilentUtterance(5000, TextToSpeech.QUEUE_ADD, null);
+                }
+                else if(str.equals("green12")) {
+                  list1[i] = "     12초 남았습니다           ";
+                  //tts.playSilentUtterance(5000, TextToSpeech.QUEUE_ADD, null);
+                }
+                else if(str.equals("green13")) {
+                  list1[i] = "     13초 남았습니다           ";
+                  //tts.playSilentUtterance(5000, TextToSpeech.QUEUE_ADD, null);
+                }
+                else if(str.equals("green14")) {
+                  list1[i] = "     13초 남았습니다           ";
+                  //tts.playSilentUtterance(5000, TextToSpeech.QUEUE_ADD, null);
+                }
+                else if(str.equals("green14")) {
+                  list1[i] = "     14초 남았습니다           ";
+                  //tts.playSilentUtterance(5000, TextToSpeech.QUEUE_ADD, null);
+                }
+                else if(str.equals("green15")) {
+                  list1[i] = "     15초 남았습니다           ";
+                  //tts.playSilentUtterance(5000, TextToSpeech.QUEUE_ADD, null);
+                }
+                else if(str.equals("green16")) {
+                  list1[i] = "     16초 남았습니다           ";
+                  //tts.playSilentUtterance(5000, TextToSpeech.QUEUE_ADD, null);
+                }
+                else if(str.equals("green17")) {
+                  list1[i] = "     17초 남았습니다           ";
+                  //tts.playSilentUtterance(5000, TextToSpeech.QUEUE_ADD, null);
+                }
+                else if(str.equals("green18")) {
+                  list1[i] = "     18초 남았습니다           ";
+                  //tts.playSilentUtterance(5000, TextToSpeech.QUEUE_ADD, null);
+                }
+                else if(str.equals("green19")) {
+                  list1[i] = "     19초 남았습니다           ";
                   //tts.playSilentUtterance(5000, TextToSpeech.QUEUE_ADD, null);
                 }
 
 
-                if(i==3) {i = 0;}
+
+                else {
+                  list1[i] = "신호등입니다   ";
+                  //tts.playSilentUtterance(5000, TextToSpeech.QUEUE_ADD, null);
+                }
+
+
+                if(i==2) {i = 0;}
                 else{i++;}
 
 
@@ -431,9 +518,14 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
               }
             }
 
-            tts.setSpeechRate(0.7f);
+            tts.setSpeechRate(0.9f);
             if(pause == false){
+              tts.playSilence(2000, TextToSpeech.QUEUE_ADD, null);
+
               tts.speak(list1[0], TextToSpeech.QUEUE_FLUSH, null, null);
+              tts.playSilence(2000, TextToSpeech.QUEUE_ADD, null);
+
+
             }
             else{
               tts.stop();
@@ -499,7 +591,9 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
     button01 = (Button) findViewById(R.id.button01);
 
     button02 = (Button) findViewById(R.id.button02);
-
+//    buttontext = (Button) findViewById(R.id.buttontext);
+//    textview = findViewById(R.id.textView);
+//    surfaceView = findViewById(R.id.surfaceView);
 
 
       button01.setOnClickListener(new View.OnClickListener() {
@@ -517,13 +611,23 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
         }
       });
 
+//    buttontext.setOnClickListener(new View.OnClickListener() {
+//      @Override
+//      public void onClick(View view) {
+//        capture();
+//      }
+//    });
+
 
 
 //    tessBaseAPI = new TessBaseAPI();
 //    String dir = getFilesDir() + "/tesseract";
 //    if(checkLanguageFile(dir+"/tessdata"))
 //      tessBaseAPI.init(dir, "eng");
-
+    tessBaseAPI = new TessBaseAPI();
+    String dir = getFilesDir() + "/tesseract";
+    if(checkLanguageFile(dir+"/tessdata"))
+      tessBaseAPI.init(dir, "eng");
 
 
 
@@ -532,110 +636,111 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
   }
 
 
-//  boolean checkLanguageFile(String dir)
-//  {
-//    File file = new File(dir);
-//    if(!file.exists() && file.mkdirs())
-//      createFiles(dir);
-//    else if(file.exists()){
-//      String filePath = dir + "/eng.traineddata";
-//      File langDataFile = new File(filePath);
-//      if(!langDataFile.exists())
-//        createFiles(dir);
-//    }
-//    return true;
-//  }
-//
-//
-//  private void createFiles(String dir)
-//  {
-//    AssetManager assetMgr = this.getAssets();
-//
-//    InputStream inputStream = null;
-//    OutputStream outputStream = null;
-//
-//    try {
-//      inputStream = assetMgr.open("eng.traineddata");
-//
-//      String destFile = dir + "/eng.traineddata";
-//
-//      outputStream = new FileOutputStream(destFile);
-//
-//      byte[] buffer = new byte[1024];
-//      int read;
-//      while ((read = inputStream.read(buffer)) != -1) {
-//        outputStream.write(buffer, 0, read);
-//      }
-//      inputStream.close();
-//      outputStream.flush();
-//      outputStream.close();
-//    }catch (IOException e) {
-//      e.printStackTrace();
-//    }
-//  }
-//
-//
-//
-//  private void capture()
-//  {
-//    surfaceView.capture(new Camera.PictureCallback() {
-//      @Override
-//      public void onPictureTaken(byte[] bytes, Camera camera) {
-//        BitmapFactory.Options options = new BitmapFactory.Options();
-//        options.inSampleSize = 8;
-//
-//        Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-//        bitmap = GetRotatedBitmap(bitmap, 90);
-//
-//        imageView.setImageBitmap(bitmap);
-//
-//        button.setEnabled(false);
-//        button.setText("텍스트 인식중...");
-//        new AsyncTess().execute(bitmap);
-//
-//        camera.startPreview();
-//      }
-//    });
-//  }
-//
-//  public synchronized static Bitmap GetRotatedBitmap(Bitmap bitmap, int degrees) {
-//    if (degrees != 0 && bitmap != null) {
-//      Matrix m = new Matrix();
-//      m.setRotate(degrees, (float) bitmap.getWidth() / 2, (float) bitmap.getHeight() / 2);
-//      try {
-//        Bitmap b2 = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), m, true);
-//        if (bitmap != b2) {
-//          bitmap = b2;
-//        }
-//      } catch (OutOfMemoryError ex) {
-//        ex.printStackTrace();
-//      }
-//    }
-//    return bitmap;
-//  }
-//
-//  private class AsyncTess extends AsyncTask<Bitmap, Integer, String> {
-//    @Override
-//    protected String doInBackground(Bitmap... mRelativeParams) {
-//      tessBaseAPI.setImage(mRelativeParams[0]);
-//      return tessBaseAPI.getUTF8Text();
-//    }
-//
-//    protected void onPostExecute(String result) {
-//      //textView.setText(result);
-//      Toast.makeText(DetectorActivity.this, ""+result, Toast.LENGTH_LONG).show();
-//
-//     // button.setEnabled(true);
-//      //button.setText("텍스트 인식");
-//
-//
-//
-//    }
-//  }
-//
-//
-//
-//
+  boolean checkLanguageFile(String dir)
+  {
+    File file = new File(dir);
+    if(!file.exists() && file.mkdirs())
+      createFiles(dir);
+    else if(file.exists()){
+      String filePath = dir + "/eng.traineddata";
+      File langDataFile = new File(filePath);
+      if(!langDataFile.exists())
+        createFiles(dir);
+    }
+    return true;
+  }
+
+
+  private void createFiles(String dir)
+  {
+    AssetManager assetMgr = this.getAssets();
+
+    InputStream inputStream = null;
+    OutputStream outputStream = null;
+
+    try {
+      inputStream = assetMgr.open("eng.traineddata");
+
+      String destFile = dir + "/eng.traineddata";
+
+      outputStream = new FileOutputStream(destFile);
+
+      byte[] buffer = new byte[1024];
+      int read;
+      while ((read = inputStream.read(buffer)) != -1) {
+        outputStream.write(buffer, 0, read);
+      }
+      inputStream.close();
+      outputStream.flush();
+      outputStream.close();
+    }catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
+
+
+
+  private void capture()
+  {
+    surfaceView.capture(new android.hardware.Camera.PictureCallback() {
+      @Override
+      public void onPictureTaken(byte[] bytes, android.hardware.Camera camera) {
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inSampleSize = 8;
+
+        Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+        bitmap = GetRotatedBitmap(bitmap, 90);
+
+        //imageView.setImageBitmap(bitmap);
+
+        buttontext.setEnabled(false);
+        buttontext.setText("텍스트 인식중...");
+        new AsyncTess().execute(bitmap);
+
+        camera.startPreview();
+      }
+    });
+
+  }
+
+  public synchronized static Bitmap GetRotatedBitmap(Bitmap bitmap, int degrees) {
+    if (degrees != 0 && bitmap != null) {
+      Matrix m = new Matrix();
+      m.setRotate(degrees, (float) bitmap.getWidth() / 2, (float) bitmap.getHeight() / 2);
+      try {
+        Bitmap b2 = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), m, true);
+        if (bitmap != b2) {
+          bitmap = b2;
+        }
+      } catch (OutOfMemoryError ex) {
+        ex.printStackTrace();
+      }
+    }
+    return bitmap;
+  }
+
+  private class AsyncTess extends AsyncTask<Bitmap, Integer, String> {
+    @Override
+    protected String doInBackground(Bitmap... mRelativeParams) {
+      tessBaseAPI.setImage(mRelativeParams[0]);
+      return tessBaseAPI.getUTF8Text();
+    }
+
+    protected void onPostExecute(String result) {
+      textview.setText(result);
+      Toast.makeText(DetectorActivity.this, ""+result, Toast.LENGTH_LONG).show();
+
+     buttontext.setEnabled(true);
+      buttontext.setText("텍스트 인식");
+
+
+
+    }
+  }
+
+
+
+
 
 
 

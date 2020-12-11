@@ -24,7 +24,7 @@
         android:id="@+id/name_map"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:background="@color/colorPaleGoldenrod"
+        android:background="@color/colorNavyBlue"
         android:layout_alignParentTop="true">
 
         <TextView
@@ -33,7 +33,7 @@
             android:paddingTop="18dp"
             android:paddingLeft="30dp"
             android:text="지도"
-            android:textColor="#000000"
+            android:textColor="#ffffff"
             android:textSize="30sp"
             />
 
@@ -52,6 +52,8 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="목적지 입력"
+            android:textSize="17dp"
+            android:textAlignment="center"
             android:clickable="true"
             android:gravity="center|left"
             android:background="@drawable/textview_layout"
@@ -63,9 +65,10 @@
             android:layout_height="60dp"
             android:layout_weight="0.5"
             android:text="검색"
+            android:textSize="17dp"
             android:clickable="true"
             android:id="@+id/srch_btn"
-            android:background="@color/colorOrange"
+            android:background="@color/colorBabyBlue"
             android:textColor="@color/colorWhite"
             android:textStyle="bold" />
     </LinearLayout>
@@ -94,7 +97,7 @@
         android:orientation="horizontal"
         android:layout_alignParentBottom="true"
         android:weightSum="3"
-        android:background="@color/colorPaleGoldenrod">
+        android:background="@color/colorNavyBlue">
 
         <LinearLayout
             android:id="@+id/linear_menu_tutorial"
@@ -104,7 +107,7 @@
             android:orientation="vertical">
 
             <ImageView
-                android:src="@drawable/ic_info_outline_gray_24dp"
+                android:src="@drawable/ic_info_outline_darkgray_24dp"
 
                 android:layout_width="50dp"
                 android:layout_height="50dp"
@@ -133,7 +136,7 @@
             android:orientation="vertical">
 
             <ImageView
-                android:src="@drawable/ic_map_black_24dp"
+                android:src="@drawable/ic_map_white_24dp"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="10dp"
@@ -149,7 +152,7 @@
                 android:gravity="center"
                 android:textSize="20sp"
                 android:text="지도"
-                android:textColor="#000000"/>
+                android:textColor="#ffffff"/>
         </LinearLayout>
 
         <LinearLayout
@@ -160,7 +163,7 @@
             android:orientation="vertical">
 
             <ImageView
-                android:src="@drawable/ic_camera_alt_gray_24dp"
+                android:src="@drawable/ic_camera_alt_graydark_24dp"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="10dp"

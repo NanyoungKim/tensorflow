@@ -11,7 +11,7 @@
         android:id="@+id/Relative_help"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:background="@color/colorPaleGoldenrod"
+        android:background="@color/colorNavyBlue"
         android:layout_alignParentTop="true">
 
 
@@ -21,7 +21,7 @@
             android:paddingTop="18dp"
             android:paddingLeft="30dp"
             android:text="도움말"
-            android:textColor="#000000"
+            android:textColor="#ffffff"
             android:textSize="30sp"
             />
 
@@ -30,76 +30,90 @@
 
     /* 기능안내 */
 
-    <RelativeLayout
-        android:id="@+id/RelativeLayout_tutorial_simple"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
         android:layout_below="@+id/Relative_help"
-        android:layout_width="match_parent"
-        android:layout_height="280dp"
-        android:orientation="vertical"
-        android:clickable="true"
-        android:background="@android:color/white">
-
-        <TextView
-            android:id="@+id/textView_tutorial_simple"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="50dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="10dp"
-            android:textColor="#000000"
-            android:text="튜토리얼"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:lineSpacingExtra="5dp"
-            />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="10dp"
-            android:textColor="#000000"
-            android:lineSpacingExtra="5dp"
-            android:layout_below="@id/textView_tutorial_simple"
-            android:text="간단한 기능 설명입니다."
-            />
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/RelativeLayout_info_func_simple"
-        android:layout_below="@id/RelativeLayout_tutorial_simple"
-        android:layout_width="match_parent"
         android:layout_above="@+id/down_map"
-        android:layout_height="240dp"
-        android:orientation="vertical"
-        android:clickable="true"
-        android:background="@android:color/white">
+        android:weightSum="2">
 
-        <TextView
-            android:id="@+id/textView_info_func_simple"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="10dp"
-            android:textColor="#000000"
-            android:text="기능 안내"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:lineSpacingExtra="5dp"
-            />
 
-        <TextView
+        <RelativeLayout
+            android:id="@+id/RelativeLayout_tutorial_simple"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="10dp"
-            android:layout_below="@id/textView_info_func_simple"
-            android:layout_marginBottom="32dp"
-            android:lineSpacingExtra="5dp"
-            android:text="상세한 기능 설명입니다."
-            android:textColor="#000000" />
-    </RelativeLayout>
+            android:layout_below="@+id/Relative_help"
+            android:layout_marginTop="-2dp"
+            android:background="@android:color/white"
+            android:clickable="true"
+            android:orientation="vertical"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/textView_tutorial_simple"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginRight="10dp"
+                android:lineSpacingExtra="5dp"
+                android:text="튜토리얼"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/textView_tutorial_simple"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="10dp"
+                android:lineSpacingExtra="5dp"
+                android:text="간단한 기능 설명입니다."
+                android:textColor="#000000" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/RelativeLayout_info_func_simple"
+            android:layout_below="@id/RelativeLayout_tutorial_simple"
+            android:layout_width="match_parent"
+            android:layout_above="@+id/down_map"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:clickable="true"
+            android:background="@android:color/white"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/textView_info_func_simple"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="10dp"
+                android:textColor="#000000"
+                android:text="기능 안내"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:lineSpacingExtra="5dp"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="10dp"
+                android:layout_below="@id/textView_info_func_simple"
+                android:layout_marginBottom="32dp"
+                android:lineSpacingExtra="5dp"
+                android:text="상세한 기능 설명입니다."
+                android:textColor="#000000" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
 
     <LinearLayout
         android:id="@+id/down_map"
@@ -108,7 +122,7 @@
         android:orientation="horizontal"
         android:layout_alignParentBottom="true"
         android:weightSum="3"
-        android:background="@color/colorPaleGoldenrod">
+        android:background="@color/colorNavyBlue">
 
         <LinearLayout
             android:id="@+id/linear_menu_tutorial"
@@ -119,7 +133,7 @@
             >
 
             <ImageView
-                android:src="@drawable/ic_info_outline_black_24dp"
+                android:src="@drawable/ic_info_outline_white_24dp"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="10dp"
@@ -136,7 +150,7 @@
                 android:gravity="center"
                 android:textSize="20sp"
                 android:text="도움말"
-                android:textColor="#000000"/>
+                android:textColor="#ffffff"/>
         </LinearLayout>
 
 
@@ -148,7 +162,7 @@
             android:orientation="vertical">
 
             <ImageView
-                android:src="@drawable/ic_map_gray_24dp"
+                android:src="@drawable/ic_map_darkgray_24dp"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="10dp"
@@ -175,7 +189,7 @@
             android:orientation="vertical">
 
             <ImageView
-                android:src="@drawable/ic_camera_alt_gray_24dp"
+                android:src="@drawable/ic_camera_alt_graydark_24dp"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="10dp"
