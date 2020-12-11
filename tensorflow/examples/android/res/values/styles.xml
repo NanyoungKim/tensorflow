@@ -41,6 +41,12 @@
 
     </style>
 
+    <style name="SplashTheme">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowBackground">@drawable/background_splash</item>
+    </style>
+
 
 <!--    <style name="Theme.Transparent" parent="android:Theme">-->
 <!--        <item name="android:windowBackground">@android:color/transparent</item>-->

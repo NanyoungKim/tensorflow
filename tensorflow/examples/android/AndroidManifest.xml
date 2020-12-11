@@ -121,15 +121,19 @@
 
 
 
-        <activity android:name=".MapActivity"
+        <activity android:name=".SplashActivity"
             android:screenOrientation="portrait"
-            android:label="@string/activity_name_detection">
+            android:label="@string/activity_name_detection"
+            android:theme="@style/SplashTheme">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".MapActivity"></activity>
+
         <activity android:name=".TutorialActivity"></activity>
 
         <activity android:name=".DetectorActivity"></activity>
