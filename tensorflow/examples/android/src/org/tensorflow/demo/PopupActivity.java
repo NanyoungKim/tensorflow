@@ -3,6 +3,7 @@ package org.tensorflow.demo;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
+import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -10,10 +11,14 @@ import android.widget.TextView;
 
 import java.util.Locale;
 
+
 public class PopupActivity extends Activity {
 
     private Context context;
     private long btnPressTime = 0;
+
+    private static final int DIALOG_ID = 1;
+
 
     public PopupActivity(){;}       //!!!!!!!!!!!!추가한 라인
     public PopupActivity(Context context){
@@ -22,6 +27,7 @@ public class PopupActivity extends Activity {
 
     TextView textView;
     TextToSpeech tts;
+
 
     public void callFunction(){
         final Dialog dig = new Dialog(context);
@@ -69,5 +75,10 @@ public class PopupActivity extends Activity {
             tts = null;
         }
     }
+
+
+
+
+
 }
 

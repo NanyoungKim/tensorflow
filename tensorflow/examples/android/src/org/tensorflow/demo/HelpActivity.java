@@ -81,6 +81,7 @@ public class HelpActivity extends Activity {
                 if(System.currentTimeMillis()<=btnPressTime+1000){
                     //((MainActivity)getActivity()).replaceFragment(TutorialActivity.newInstance());
                     Intent intent = new Intent(HelpActivity.this,TutorialActivity.class);
+
                     startActivity(intent);
                 }
             }
@@ -112,6 +113,8 @@ public class HelpActivity extends Activity {
             }
         });
 
+
+        //하단바
         // 메뉴 - 지도 클릭
         linear_menu_map.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -130,7 +133,11 @@ public class HelpActivity extends Activity {
                     return;
                 }
                 if(System.currentTimeMillis()<=btnPressTime+1000){
-                    Intent it = new Intent(HelpActivity.this,MapActivity.class);
+                    Intent it = new Intent(HelpActivity.this, MapActivity.class);
+                    it.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+
+                    it.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+
 
                     startActivity(it);
                 }

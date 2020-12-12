@@ -1108,6 +1108,8 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     LinearLayout linear_menu_tutorial;
     LinearLayout linear_menu_camera;
 
+    private int popflag = 1;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -1115,7 +1117,9 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         setContentView(R.layout.activity_main_map);
 
         PopupActivity popupActivity = new PopupActivity(this);
+
         popupActivity.callFunction();
+
 
         mLayout = findViewById(R.id.layout_map);
         activity = (AppCompatActivity) this;
@@ -1149,6 +1153,9 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                 }
                 if(System.currentTimeMillis()<=btnPressTime+1000){
                     Intent it = new Intent(MapActivity.this,HelpActivity.class);
+                    it.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                    it.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+
 
                     startActivity(it);
                 }
@@ -1157,7 +1164,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
 
 
-        // 메뉴 - 카메 클릭
+        // 메뉴 - 카메라 클릭
         linear_menu_camera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -1176,6 +1183,8 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                 }
                 if(System.currentTimeMillis()<=btnPressTime+1000){
                     Intent it = new Intent(MapActivity.this,DetectorActivity.class);
+                    it.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                    it.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
 
                     startActivity(it);
                 }

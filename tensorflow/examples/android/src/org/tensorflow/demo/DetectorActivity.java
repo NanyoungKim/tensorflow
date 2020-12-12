@@ -16,7 +16,9 @@
 
 package org.tensorflow.demo;
 
+import android.annotation.TargetApi;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
@@ -31,6 +33,7 @@ import android.graphics.RectF;
 import android.graphics.Typeface;
 import android.media.ImageReader.OnImageAvailableListener;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.speech.tts.TextToSpeech;
@@ -41,6 +44,7 @@ import android.view.Display;
 import android.view.Surface;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -49,6 +53,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
@@ -109,7 +114,7 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
   // Minimum detection confidence to track a detection.
   private static final float MINIMUM_CONFIDENCE_TF_OD_API = 0.6f;
   private static final float MINIMUM_CONFIDENCE_MULTIBOX = 0.1f;
-  private static final float MINIMUM_CONFIDENCE_YOLO = 0.1f;
+  private static final float MINIMUM_CONFIDENCE_YOLO = 0.5f;
   //private static final float MINIMUM_CONFIDENCE_YOLO = 0.05f;
 
   private static final boolean MAINTAIN_ASPECT = MODE == DetectorMode.YOLO;
@@ -153,7 +158,8 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
   Button buttontext;
 
   TextView textview;
-
+  private long btnPressTime = 0;
+  RelativeLayout relative_camera;
 
   //
 
@@ -520,10 +526,10 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
 
             tts.setSpeechRate(0.9f);
             if(pause == false){
-              tts.playSilence(2000, TextToSpeech.QUEUE_ADD, null);
+              tts.playSilence(1700, TextToSpeech.QUEUE_ADD, null);
 
               tts.speak(list1[0], TextToSpeech.QUEUE_FLUSH, null, null);
-              tts.playSilence(2000, TextToSpeech.QUEUE_ADD, null);
+              tts.playSilence(1700, TextToSpeech.QUEUE_ADD, null);
 
 
             }
@@ -595,6 +601,8 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
 //    textview = findViewById(R.id.textView);
 //    surfaceView = findViewById(R.id.surfaceView);
 
+    relative_camera = (RelativeLayout) findViewById((R.id.relative_camera));
+
 
       button01.setOnClickListener(new View.OnClickListener() {
       @Override
@@ -611,6 +619,33 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
         }
       });
 
+      relative_camera.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+
+          if(System.currentTimeMillis()>btnPressTime+1000){
+            btnPressTime = System.currentTimeMillis();
+            String text2 = "도움말";
+            Toast.makeText(DetectorActivity.this, text2, Toast.LENGTH_SHORT).show();
+
+            //http://stackoverflow.com/a/29777304
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+              ttsGreater21(text2);
+            } else {
+              ttsUnder20(text2);
+            }
+            return;
+          }
+          if(System.currentTimeMillis()<=btnPressTime+1000){
+            Intent it = new Intent(DetectorActivity.this,MapActivity.class);
+            it.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+            it.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+
+
+            startActivity(it);
+          }
+        }
+      });
 //    buttontext.setOnClickListener(new View.OnClickListener() {
 //      @Override
 //      public void onClick(View view) {
@@ -740,6 +775,20 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
 
 
 
+
+  // TTS 관련
+  @SuppressWarnings("deprecation")
+  private void ttsUnder20(String text) {
+    HashMap<String, String> map = new HashMap<>();
+    map.put(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID, "MessageId");
+    tts.speak(text, TextToSpeech.QUEUE_FLUSH, map);
+  }
+
+  @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+  private void ttsGreater21(String text) {
+    String utteranceId=this.hashCode() + "";
+    tts.speak(text, TextToSpeech.QUEUE_FLUSH, null, utteranceId);
+  }
 
 
 
